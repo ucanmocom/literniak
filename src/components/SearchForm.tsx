@@ -30,6 +30,7 @@ export const SearchForm: FC = () => {
   const [activeTab, setActiveTab] = useState<'search' | 'favorites'>('search');
   const resultsRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [showNoResultsModal, setShowNoResultsModal] = useState(false);
 
   // Load favorites from localStorage
   useEffect(() => {
@@ -74,6 +75,9 @@ export const SearchForm: FC = () => {
       }
 
       setSearch((prev) => ({ ...prev, words: filtered, isLoading: false }));
+      if (filtered.length === 0) {
+        setShowNoResultsModal(true);
+      }
 
       // Scroll to results
       setTimeout(() => {
@@ -201,8 +205,14 @@ export const SearchForm: FC = () => {
                 </div>
               )}
 
-              {search.words.length === 0 && !search.isLoading && search.letters.trim() && (
-                <UI.NoResults />
+              {showNoResultsModal && (
+                <UI.Modal
+                  message={`Brak słów dla liter: "${search.letters}"`}
+                  onClose={() => {
+                    setShowNoResultsModal(false);
+                    setTimeout(() => inputRef.current?.focus(), 100);
+                  }}
+                />
               )}
             </>
         ) : (

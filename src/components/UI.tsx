@@ -1,3 +1,27 @@
+import { useEffect } from 'react';
+
+interface ModalProps {
+  message: string;
+  onClose: () => void;
+}
+
+export const Modal: FC<ModalProps> = ({ message, onClose }) => {
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      onClose();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [onClose]);
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <p>{message}</p>
+        <button className="modal-close-btn" onClick={onClose}>Zamknij</button>
+      </div>
+    </div>
+  );
+};
 import type { FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
 
