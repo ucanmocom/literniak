@@ -307,6 +307,9 @@ export const Footer: FC<FooterProps> = ({ children }) => {
           <p className="footer-disclaimer">
             SCRABBLE® jest zastrzeżonym znakiem towarowym. Wszystkie prawa do marki należą do jej właścicieli. Ta strona nie jest powiązana z firmą Mattel. LITERAKI® jest zastrzeżonym znakiem towarowym. Wszystkie prawa do marki należą do jej właścicieli. Ta strona nie jest powiązana z twórcami gry Literaki ani serwisem Kurnik.pl. KURNIK® jest zastrzeżonym znakiem towarowym. Wszystkie prawa do marki należą do jej właścicieli. Ta strona nie jest powiązana z serwisem Kurnik.pl ani jego właścicielami.
           </p>
+          <p style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(0,0,0,0.1)', fontSize: '0.9em' }}>
+            <strong>Projekt Open Source:</strong> <a href="https://github.com/ucanmocom/literniak" target="_blank" rel="noopener noreferrer">GitHub - Literniak</a>
+          </p>
         </>
       )}
     </div>

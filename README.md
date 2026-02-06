@@ -1,5 +1,7 @@
 # Literniak 📝
 
+[![Open Source](https://img.shields.io/badge/Open%20Source-MIT-blue)](https://github.com/ucanmocom/literniak)
+
 Aplikacja do wyszukiwania polskich słów na podstawie dostępnych liter. Idealna dla graczy w Scrabble'a, Słowa z Wyrazów i innych słownych gier planszowych!
 
 ## 🎯 Funkcje
@@ -73,6 +75,20 @@ src/
 ## 💾 Dane lokalne
 
 Aplikacja przechowuje ulubione słowa w `localStorage` przeglądarki, więc twoja lista ulubionych jest dostępna nawet po zamknięciu aplikacji.
+
+## 🤝 Open Source
+
+Ten projekt jest **całkowicie darmowy i otwarty dla każdego**! 
+
+Możesz go:
+- 🔧 Rozwijać i dodawać nowe funkcje
+- 🐛 Zgłaszać i naprawiać błędy
+- 📖 Ulepszać dokumentację
+- 💾 Klonować i modyfikować na swoje potrzeby
+
+**Repozytorium:** https://github.com/ucanmocom/literniak
+
+Zachęcamy do współtworzenia projektu! 🚀
 
 ## 📄 Licencja
 
