@@ -134,6 +134,7 @@ export const SearchForm: FC = () => {
                   onKeyDown={handleInputKeyDown}
                   placeholder="Wpisz litery..."
                   maxLength={15}
+                  isLoading={search.isLoading}
                 />
 
                 <UI.ButtonGroup>

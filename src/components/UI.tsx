@@ -67,6 +67,7 @@ interface InputGroupProps {
   placeholder?: string;
   hint?: string;
   maxLength?: number;
+  isLoading?: boolean;
 }
 
 export const InputGroup = forwardRef<HTMLInputElement, InputGroupProps>(({
@@ -77,20 +78,28 @@ export const InputGroup = forwardRef<HTMLInputElement, InputGroupProps>(({
   placeholder = 'Wpisz litery...',
   hint,
   maxLength = 15,
+  isLoading = false,
 }, ref) => {
   return (
     <div className="input-group-main">
       {label && <label>{label}</label>}
-      <input
-        ref={ref}
-        type="text"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        onKeyDown={onKeyDown}
-        placeholder={placeholder}
-        maxLength={maxLength}
-        className="input-main"
-      />
+      <div className="input-wrapper">
+        <input
+          ref={ref}
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          onKeyDown={onKeyDown}
+          placeholder={placeholder}
+          maxLength={maxLength}
+          className="input-main"
+        />
+        {isLoading && (
+          <div className="input-spinner">
+            <div className="spinner-small"></div>
+          </div>
+        )}
+      </div>
       {hint && <span className="input-hint">{hint}</span>}
     </div>
   );
