@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
 import * as UI from './UI';
 import { getScrabblePoints, groupWordsByLength } from '../utils/scrabbleUtils';
@@ -28,6 +28,8 @@ export const SearchForm: FC = () => {
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'search' | 'favorites'>('search');
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Load favorites from localStorage
   useEffect(() => {
@@ -72,12 +74,27 @@ export const SearchForm: FC = () => {
       }
 
       setSearch((prev) => ({ ...prev, words: filtered, isLoading: false }));
+
+      // Scroll to results
+      setTimeout(() => {
+        resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+
+      // Hide mobile keyboard
+      inputRef.current?.blur();
     } catch (error) {
       setSearch((prev) => ({
         ...prev,
         isLoading: false,
         error: 'Błąd podczas wyszukiwania. Spróbuj ponownie.',
       }));
+    }
+  };
+
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSearch(e as unknown as React.FormEvent);
     }
   };
 
@@ -103,8 +120,10 @@ export const SearchForm: FC = () => {
           <>
             <form onSubmit={handleSearch}>
                 <UI.InputGroup
+                  ref={inputRef}
                   value={search.letters}
                   onChange={(value) => setSearch((prev) => ({ ...prev, letters: value }))}
+                  onKeyDown={handleInputKeyDown}
                   placeholder="Wpisz litery..."
                   maxLength={15}
                 />
@@ -147,6 +166,8 @@ export const SearchForm: FC = () => {
                 <UI.Description isHidden={search.words.length > 0 || search.isLoading} />
 
                 {search.error && <UI.NoResults message={search.error} />}
+
+                {search.words.length > 0 && <div ref={resultsRef} style={{ scrollMarginTop: '52px' }} />}
               </form>
 
               {search.words.length > 0 && (

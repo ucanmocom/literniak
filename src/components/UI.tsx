@@ -1,4 +1,5 @@
 import type { FC, ReactNode } from 'react';
+import { forwardRef } from 'react';
 
 interface NavbarProps {
   activeTab: 'search' | 'favorites';
@@ -62,26 +63,30 @@ interface InputGroupProps {
   label?: string;
   value: string;
   onChange: (value: string) => void;
+  onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
   hint?: string;
   maxLength?: number;
 }
 
-export const InputGroup: FC<InputGroupProps> = ({
+export const InputGroup = forwardRef<HTMLInputElement, InputGroupProps>(({
   label,
   value,
   onChange,
+  onKeyDown,
   placeholder = 'Wpisz litery...',
   hint,
   maxLength = 15,
-}) => {
+}, ref) => {
   return (
     <div className="input-group-main">
       {label && <label>{label}</label>}
       <input
+        ref={ref}
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        onKeyDown={onKeyDown}
         placeholder={placeholder}
         maxLength={maxLength}
         className="input-main"
@@ -89,7 +94,9 @@ export const InputGroup: FC<InputGroupProps> = ({
       {hint && <span className="input-hint">{hint}</span>}
     </div>
   );
-};
+});
+
+InputGroup.displayName = 'InputGroup';
 
 interface ButtonGroupProps {
   children: ReactNode;
