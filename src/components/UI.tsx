@@ -7,7 +7,7 @@ interface ModalProps {
 
 export const Modal: FC<ModalProps> = ({ message, onClose }) => {
   useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
+    const handleKey = () => {
       onClose();
     };
     window.addEventListener('keydown', handleKey);
