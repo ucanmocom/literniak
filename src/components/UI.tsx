@@ -1,8 +1,8 @@
 import type { FC, ReactNode } from 'react';
 
 interface NavbarProps {
-  activeTab: string;
-  onTabChange: (tab: string) => void;
+  activeTab: 'search' | 'favorites';
+  onTabChange: (tab: 'search' | 'favorites') => void;
 }
 
 export const Navbar: FC<NavbarProps> = ({ activeTab, onTabChange }) => {
@@ -44,6 +44,7 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = () => {
   return (
     <div className="literniak-header">
+      <h1>Literniak - Wyszukiwarka Słów z Liter</h1>
       <p>Szybko znajdź każde słowo z Twoich liter</p>
     </div>
   );
