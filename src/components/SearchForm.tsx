@@ -77,7 +77,13 @@ export const SearchForm: FC = () => {
 
       // Scroll to results
       setTimeout(() => {
-        resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (resultsRef.current) {
+          const elementPosition = resultsRef.current.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: elementPosition - 100,
+            behavior: 'smooth',
+          });
+        }
       }, 100);
 
       // Hide mobile keyboard
@@ -92,7 +98,9 @@ export const SearchForm: FC = () => {
   };
 
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    // Handle Enter key (works on desktop and most mobile keyboards)
+    // Also check keyCode 13 for Android compatibility
+    if (e.key === 'Enter' || e.keyCode === 13) {
       e.preventDefault();
       handleSearch(e as unknown as React.FormEvent);
     }
@@ -167,7 +175,7 @@ export const SearchForm: FC = () => {
 
                 {search.error && <UI.NoResults message={search.error} />}
 
-                {search.words.length > 0 && <div ref={resultsRef} style={{ scrollMarginTop: '52px' }} />}
+                {search.words.length > 0 && <div ref={resultsRef} />}
               </form>
 
               {search.words.length > 0 && (
