@@ -88,6 +88,7 @@ interface InputGroupProps {
   value: string;
   onChange: (value: string) => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  onClear?: () => void;
   placeholder?: string;
   hint?: string;
   maxLength?: number;
@@ -99,6 +100,7 @@ export const InputGroup = forwardRef<HTMLInputElement, InputGroupProps>(({
   value,
   onChange,
   onKeyDown,
+  onClear,
   placeholder = 'Wpisz litery...',
   hint,
   maxLength = 15,
@@ -122,6 +124,16 @@ export const InputGroup = forwardRef<HTMLInputElement, InputGroupProps>(({
           <div className="input-spinner">
             <div className="spinner-small"></div>
           </div>
+        )}
+        {!isLoading && value && onClear && (
+          <button
+            type="button"
+            className="input-clear-btn"
+            onClick={onClear}
+            aria-label="Wyczyść pole"
+          >
+            ✕
+          </button>
         )}
       </div>
       {hint && <span className="input-hint">{hint}</span>}

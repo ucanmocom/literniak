@@ -136,6 +136,10 @@ export const SearchForm: FC = () => {
                   value={search.letters}
                   onChange={(value) => setSearch((prev) => ({ ...prev, letters: value }))}
                   onKeyDown={handleInputKeyDown}
+                  onClear={() => {
+                    setSearch((prev) => ({ ...prev, letters: '' }));
+                    setTimeout(() => inputRef.current?.focus(), 0);
+                  }}
                   placeholder="Wpisz litery..."
                   maxLength={15}
                   isLoading={search.isLoading}

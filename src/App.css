@@ -250,6 +250,32 @@ body {
   font-weight: 500;
 }
 
+.input-clear-btn {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+
+.input-clear-btn:hover {
+  color: #3d4759;
+}
+
+.input-clear-btn:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
 /* Buttons */
 .button-group {
   display: flex;
