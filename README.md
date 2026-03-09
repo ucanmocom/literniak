@@ -51,6 +51,27 @@ Aplikacja korzysta z bezpłatnego API słów polskich - **poocoo**
 ### Dokumentacja API
 Pełna dokumentacja API dostępna jest tutaj: https://api.poocoo.pl/index.html
 
+## 🧭 Opis SEO
+
+Literniak to anagramator i wyszukiwarka słów zaprojektowana dla graczy Scrabble, Literaki i wszystkich fanów gier słownych. Aplikacja działa jako szybki wyszukiwacz słów i wyszukiwarka słów z liter: wpisujesz dostępne litery, a system zwraca możliwe słowa z liter oraz ich punktację. Jeśli interesuje Cię efektywne wyszukiwanie słów, szukanie wyrazów lub generator słów z podanych liter, Literniak pozwala błyskawicznie znaleźć najlepsze kombinacje.
+
+## ❓ FAQ
+
+### Czym jest Literniak?
+Literniak to anagramator oraz wyszukiwarka słów z liter, która pomaga układać słowa do gier słownych.
+
+### Czy Literniak działa do Scrabble i Literaki?
+Tak. Narzędzie jest tworzone pod Scrabble, Literaki i podobne gry, gdzie liczy się szybkie znajdowanie słów.
+
+### Jak działa wyszukiwarka słów z liter?
+Wpisujesz litery, które masz, a aplikacja zwraca możliwe słowa z liter wraz z dodatkowymi filtrami.
+
+### Czy to darmowy wyszukiwacz słów?
+Tak, Literniak jest darmowy.
+
+### Czy mogę zawęzić wyszukiwanie słów?
+Tak. Możesz filtrować wyniki po pierwszej literze, ostatniej literze, fragmencie słowa i długości.
+
 ### Atrybutacja
 
 Aplikacja korzysta z danych słów z API **poocoo**:

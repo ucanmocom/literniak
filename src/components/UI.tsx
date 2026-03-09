@@ -235,10 +235,31 @@ export const Description: FC<DescriptionProps> = ({ isHidden = false }) => {
       <strong>🔤 Literniak – generator słów z liter</strong>
       <br />
       <br />
-      Literniak to szybkie i proste narzędzie do tworzenia słów z podanych liter. Idealne do gier słownych
-      takich jak Scrabble, Literaki czy Word Games. Wpisz swoje litery, a Literniak w kilka sekund
-      wygeneruje wszystkie możliwe słowa. Bez kombinowania, bez bólu głowy, po prostu
-      działa.
+      Literniak to rozbudowany anagramator online i praktyczna wyszukiwarka słów dla wszystkich, którzy
+      chcą sprawnie układać słowa w grach językowych. Narzędzie zostało przygotowane z myślą o osobach,
+      które grają w Scrabble, Literaki i inne gry planszowe, gdzie liczy się szybkość, dokładność i dobra
+      strategia. Jeśli potrzebujesz miejsca, w którym wyszukiwanie słów jest wygodne, czytelne i szybkie,
+      ta aplikacja działa właśnie jako nowoczesny wyszukiwacz słów oraz precyzyjna wyszukiwarka słów z liter.
+      <br />
+      <br />
+      W praktyce działa to bardzo prosto: wpisujesz dostępne litery, a Literniak natychmiast zwraca słowa
+      z liter, które możesz realnie zagrać. Dzięki temu szukanie wyrazów nie wymaga już ręcznego analizowania
+      kombinacji. Zamiast zgadywać, dostajesz gotowe listy wyników i możesz szybciej zdecydować, które słowo
+      da Ci najlepszy wynik punktowy. To właśnie dlatego Literniak jest traktowany jako generator słów z
+      podanych liter zarówno przez początkujących, jak i bardziej zaawansowanych graczy.
+      <br />
+      <br />
+      Narzędzie wspiera codzienną grę na kilka sposobów: pokazuje szeroki zestaw wyników, pozwala filtrować
+      słowa i pomaga znaleźć trafniejsze opcje pod konkretną sytuację na planszy. Niezależnie od tego, czy
+      grasz rekreacyjnie, czy rywalizujesz o najwyższy wynik, dobrze działająca wyszukiwarka słów z liter
+      daje realną przewagę. Literniak łączy funkcję anagramatora z wygodnym interfejsem, dlatego cały proces
+      układania słów staje się szybszy i bardziej przewidywalny.
+      <br />
+      <br />
+      Jeśli szukasz rozwiązania pod hasła takie jak: anagramator, wyszukiwarka słów, wyszukiwacz słów,
+      wyszukiwanie słów, słowa z liter, szukanie wyrazów, generator słów z podanych liter, to Literniak
+      został przygotowany dokładnie pod takie zastosowania. Dodatkowo dobrze sprawdza się w grach typu
+      Scrabble i Literaki, gdzie wybór jednej dobrej opcji może zdecydować o całej rundzie.
       <br />
       <br />
       <strong>🧠 Jak korzystać z Literniaka?</strong>
@@ -248,6 +269,48 @@ export const Description: FC<DescriptionProps> = ({ isHidden = false }) => {
       <strong>2.</strong> Kliknij Generuj słowa.
       <br />
       <strong>3.</strong> Gotowe – Literniak pokaże możliwe słowa z Twoich liter.
+      <br />
+      <br />
+      <strong>❓ FAQ</strong>
+      <br />
+      <strong>Czy Literniak działa jako wyszukiwarka słów z liter?</strong>
+      <br />
+      Tak. Wpisujesz dostępne litery, a system zwraca możliwe słowa z liter, które możesz wykorzystać
+      w grze. To klasyczna wyszukiwarka słów z liter połączona z funkcją anagramatora.
+      <br />
+      <br />
+      <strong>Czy to jest anagramator do Scrabble i Literaki?</strong>
+      <br />
+      Tak. Literniak został stworzony pod Scrabble i Literaki, dlatego działa jako anagramator oraz
+      wyszukiwacz słów do szybkiego przygotowania najlepszego ruchu.
+      <br />
+      <br />
+      <strong>Czy mogę filtrować wyniki wyszukiwania słów?</strong>
+      <br />
+      Tak. Po wyszukiwaniu słów możesz zawęzić wyniki po początku, końcu, fragmencie i długości słowa,
+      co usprawnia szukanie wyrazów pod konkretną planszę.
+      <br />
+      <br />
+      <strong>Czy generator słów z podanych liter jest darmowy?</strong>
+      <br />
+      Tak, Literniak jest darmowy i dostępny online.
+      <br />
+      <br />
+      <strong>Czy Literniak pomaga przy szybkim wyszukiwaniu słów w trakcie rozgrywki?</strong>
+      <br />
+      Tak. Narzędzie zostało zaprojektowane tak, aby wyszukiwanie słów było szybkie i wygodne nawet
+      podczas aktywnej gry, gdy liczy się czas.
+      <br />
+      <br />
+      <strong>Czy mogę traktować Literniak jako codzienny wyszukiwacz słów?</strong>
+      <br />
+      Tak. Literniak sprawdza się jako codzienna wyszukiwarka słów do nauki, zabawy i gier planszowych.
+      Działa jako anagramator, wyszukiwarka słów z liter i praktyczny generator słów z podanych liter.
+      <br />
+      <br />
+      <strong>Czy działa na telefonie?</strong>
+      <br />
+      Tak, aplikacja jest responsywna i działa na urządzeniach mobilnych.
     </div>
   );
 };

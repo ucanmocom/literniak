@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import type { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as UI from './UI';
 import { getScrabblePoints, groupWordsByLength } from '../utils/scrabbleUtils';
 import { searchWords } from '../services/poocooApi';
@@ -15,7 +16,12 @@ interface SearchState {
   error?: string;
 }
 
-export const SearchForm: FC = () => {
+interface SearchFormProps {
+  routeLetters?: string;
+}
+
+export const SearchForm: FC<SearchFormProps> = ({ routeLetters }) => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState<SearchState>({
     letters: '',
     startsWith: '',
@@ -30,6 +36,7 @@ export const SearchForm: FC = () => {
   const [activeTab, setActiveTab] = useState<'search' | 'favorites'>('search');
   const resultsRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const lastSearchedLettersRef = useRef('');
   const [showNoResultsModal, setShowNoResultsModal] = useState(false);
 
   // Load favorites from localStorage
@@ -46,16 +53,14 @@ export const SearchForm: FC = () => {
     localStorage.setItem('literniak_favorites', JSON.stringify(Array.from(newFavorites)));
   };
 
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!search.letters.trim()) return;
+  const executeSearch = async (lettersToSearch: string) => {
+    if (!lettersToSearch.trim()) return;
 
     setSearch((prev) => ({ ...prev, isLoading: true, error: undefined }));
 
     try {
       const allWords = new Set<string>();
-      const words = await searchWords(search.letters, 200);
+      const words = await searchWords(lettersToSearch, 200);
       words.forEach((w) => allWords.add(w));
 
       let filtered = Array.from(allWords);
@@ -79,6 +84,8 @@ export const SearchForm: FC = () => {
         setShowNoResultsModal(true);
       }
 
+      lastSearchedLettersRef.current = lettersToSearch;
+
       // Scroll to results
       setTimeout(() => {
         if (resultsRef.current) {
@@ -99,6 +106,34 @@ export const SearchForm: FC = () => {
         error: 'Błąd podczas wyszukiwania. Spróbuj ponownie.',
       }));
     }
+  };
+
+  useEffect(() => {
+    if (!routeLetters) return;
+
+    const normalizedLetters = routeLetters.trim();
+    if (!normalizedLetters) return;
+
+    setSearch((prev) => {
+      if (prev.letters === normalizedLetters) return prev;
+      return { ...prev, letters: normalizedLetters };
+    });
+
+    if (lastSearchedLettersRef.current !== normalizedLetters) {
+      lastSearchedLettersRef.current = normalizedLetters;
+      void executeSearch(normalizedLetters);
+    }
+  }, [routeLetters]);
+
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const normalizedLetters = search.letters.trim();
+    if (!normalizedLetters) return;
+
+    lastSearchedLettersRef.current = normalizedLetters;
+    navigate(`/slowazliter/${encodeURIComponent(normalizedLetters)}`);
+    await executeSearch(normalizedLetters);
   };
 
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -180,7 +215,14 @@ export const SearchForm: FC = () => {
                   />
                 </UI.FiltersGroup>
 
-                <UI.Description isHidden={search.words.length > 0 || search.isLoading} />
+                <UI.Description
+                  isHidden={
+                    search.isLoading ||
+                    Boolean(search.letters.trim()) ||
+                    search.words.length > 0 ||
+                    Boolean(search.error)
+                  }
+                />
 
                 {search.error && <UI.NoResults message={search.error} />}
 
